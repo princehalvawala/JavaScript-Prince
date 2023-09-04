@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<style>
+    body{
+        background-color: #212121;
+        color: #fff;
+    }
+</style>
+<body>
+    <!---- DOM lec-34 Edit and Remove elemnts in DOM ------>
+
+
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+    
+</body>
+
+<script>
+    // for adding list //
+
+    function addLanguage(langName){
+        const li = document.createElement('li'); // 1st create 'list' element //
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li) // select language class and add it into li .// 
+
+    }
+    addLanguage("Python"); // list will be addedd
+    addLanguage("HTML"); // list will be addedd //
+   
+    // 2 nd Optimize method //
+
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        const addText = document.createTextNode(langName) // created text node //
+        li.appendChild(addText); // append text node into li //
+        document.querySelector('.language').appendChild(li) // select language class and add it into li .// 
+    }
+
+    addOptiLanguage('Java');
+
+
+
+    // How to EDIT values ? //
+
+    const secondLang = document.querySelector("li:nth-child(2)");
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli);
+
+    // 2 nd method of EDIT ..//
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li> TypeScript </li>'
+
+
+    //  How to REMOVE element //
+
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove(); 
+
+
+    
+
+</script>
+</html>
